@@ -1,0 +1,62 @@
+% Команда для линии с нижним подчёркиванием, возможностью написания сверху текста на ней и текстом под ней.
+\newcommand\superunderline[3]{$\underset{\text{#3}}{\text{\underline{\hspace{0.3cm}#1\hspace{#2}}}}$}
+
+% Тоже самое, но ещё с отступом слева от текста (выравнивание по середине)
+\newcommand\superunderlinec[3]{$\underset{\text{#3}}{\text{\underline{\hspace{#2}#1\hspace{#2}}}}$}
+
+% "Прокаченные" типы колонок для LaTeX. Умеют выравнивать содержимое столбца по горизонтали и принимать фиксированный размер. Полезная вещь.
+\newcolumntype{A}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Выравнивание по левому краю.
+\newcolumntype{B}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Выравнивание по середине.
+\newcolumntype{D}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Выравнивание по правому краю.
+
+% Титульный лист (ГОСТ Р 7.0.11-2001, 5.1)
+\thispagestyle{empty}
+\begin{center}
+\thesisOrganization
+\end{center}
+%
+\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\hfill\begin{minipage}{0.4\textwidth}
+			Допустить работу к защите \\
+			Зав. каф. КНЭМ \\
+			\underline{\hspace{3.3cm}}Клячин В.А.\\ [2mm]
+			«\underline{\hspace{0.7cm}}» \underline{\hspace{2.5cm}} 2020 г.
+		\end{minipage}
+%
+\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\begin{center}
+{\large \thesisAuthor}
+\end{center}
+%
+\vspace{0cm plus0fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\begin{center}
+\textbf {\large %\MakeUppercase
+\thesisTitle}
+
+\vspace{0pt plus2fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+{%\small
+Выпускная квалификационная работа бакалавра \\ по направлению \thesisSpecialtyNumber\ \\ <<\thesisSpecialtyTitle>>
+}
+
+\ifdefined\thesisSpecialtyTwoNumber
+{%\small
+Специальность \thesisSpecialtyTwoNumber\ "---
+
+<<\thesisSpecialtyTwoTitle>>
+}
+\fi
+
+\vspace{0pt plus2fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\begin{tabular}{A{4.8cm}A{4.8cm}A{4.8cm}}
+%\begin{tabular}{m{4.8cm}m{4.8cm}m{4.8cm}}
+	Студент & \thesisAuthorLastName \  \thesisAuthorInitials & \superunderlinec{\phantom{28.06.2020, Курбанов}}{0.3cm}{(дата, подпись)} \\
+	Научный руководитель & д.ф. - м.н., проф. каф. КНЭМ Клячин В. А. & \superunderlinec{\phantom{28.06.2020, Курбанов}}{0.3cm}{(дата, подпись)} \\
+	Нормоконтролер & к. ф.-м. н., доц. каф. КНЭМ Полубоярова Н.М. & \superunderlinec{\phantom{28.06.2020, Курбанов}}{0.3cm}{(дата, подпись)} \\
+	Рецензент & к.т.н.,  ст. преп. каф. Радиофизики Глухов А.Ю. & \superunderlinec{\phantom{28.06.2020, Курбанов}}{0.3cm}{(дата, подпись)}
+\end{tabular}
+\end{center}
+%
+\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+
+\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+{\centering\textbf{\thesisCity}\  \textbf{\thesisYear}\par}
