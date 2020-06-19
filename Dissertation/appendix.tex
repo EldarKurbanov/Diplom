@@ -1,3 +1,117 @@
+\chapter{Форматы сообщений ROS, используемые в ВКР}
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{sensors\_msg/Image.msg}\label{lst:image-msg}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	std_msgs/Header header
+	uint32 height
+	uint32 width
+	string encoding
+	uint8 is_bigendian
+	uint32 step
+	uint8[] data
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{sensors\_msg/LaserScan.msg}\label{lst:laserscan-msg}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	std_msgs/Header header
+	float32 angle_min
+	float32 angle_max
+	float32 angle_increment
+	float32 time_increment
+	float32 scan_time
+	float32 range_min
+	float32 range_max
+	float32[] ranges
+	float32[] intensities
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{sensors\_msg/PointCloud2.msg}\label{lst:pointcloud2-msg}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	std_msgs/Header header
+	uint32 height
+	uint32 width
+	sensor_msgs/PointField[] fields
+	bool is_bigendian
+	uint32 point_step
+	uint32 row_step
+	uint8[] data
+	bool is_dense
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{cartographer\_ros\_msgs/SubmapList.msg}\label{lst:submap-list-msg}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	std_msgs/Header header
+	cartographer_ros_msgs/SubmapEntry[] submap
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{nav\_msgs/OccupancyGrid.msg}\label{lst:occupancy-grid-msg}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	std_msgs/Header header
+	nav_msgs/MapMetaData info
+	int8[] data
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{gpio\_jetson\_service/gpio\_srv.srv}\label{lst:gpio-srv}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	uint8 command
+	---
+	bool success
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{inference/Bboxes.msg}\label{lst:bboxes-msg}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	Bbox[] bboxes
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\begin{ListingEnv}[!h]% настройки floating аналогичны окружению figure
+    \captiondelim{ } % разделитель идентификатора с номером от наименования
+    \caption{inference/Bbox.msg}\label{lst:bbox-msg}
+    % окружение учитывает пробелы и табуляции и применяет их в сответсвии с настройками
+    \begin{lstlisting}[language={[ISO]C++}]
+	float32 x_min
+	float32 y_min
+	float32 x_max
+	float32 y_max
+	float32 score
+	string label
+    \end{lstlisting}
+\end{ListingEnv}%
+
+\chapter{Реализованный исходный код}
+
+\begingroup
+\captiondelim{ } % разделитель идентификатора с номером от наименования
+    \lstinputlisting[language={C++},caption={Исходный код узла движения робота},label={lst:movement-source}]{listings/move_v1.cpp}
+\endgroup
+
 \chapter{Примеры вставки листингов программного кода}\label{app:A}
 
 Для крупных листингов есть два способа. Первый красивый, но в нём могут быть
